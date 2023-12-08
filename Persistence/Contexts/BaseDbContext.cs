@@ -27,6 +27,7 @@ namespace Persistence.Contexts
                 a.Property(p => p.Name).HasColumnName("Name");
             });
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //base.OnConfiguring(optionsBuilder);

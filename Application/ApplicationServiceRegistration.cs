@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Features.Categories.Profiles;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,11 @@ namespace Application
             {
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+            MapperConfiguration mapperConfiguration = new MapperConfiguration(mapperConfig => {
+                mapperConfig.AddProfile<MappingProfiles>();
+            });
+
+            services.AddSingleton(mapperConfiguration.CreateMapper());
             return services;
         }
     }
